@@ -1,0 +1,213 @@
+</!DOCTYPE html>
+<html>
+<head>
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script type="text/javascript">
+
+function dobValidate() {
+
+var date= new Date();
+
+var year=date.getFullYear();
+var month=date.getMonth()+1;
+var dd=date.getDate();
+var minyear = year-18;
+if(month<10)
+{
+month='0'+month;
+}
+if(dd<10)
+{
+dd=0+""+dd;
+}
+
+document.getElementById('dob').max=minyear+"-"+month+"-"+dd;
+//document.getElementById('dob').min=minyear+"-"+month+"-"+dd;
+
+}
+
+</script>
+
+
+<script type="text/javascript">
+  	$(function() {
+  		$("#signup").click(function(){
+  			var pass = $("#psr").val();
+  			var pattern ="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@!#$%&]).{6,}";
+  			if (!pass.match(pattern)) {
+  				alert("Invalid Password");
+  			}
+  			else{
+  				alert("Password match");
+  			}
+  		});
+  		// body...
+  	});
+
+  	
+  </script>
+  <script type="text/javascript">
+  	$(function() {
+    $("#psw").keyup(function() {
+        var password = $("#psr").val();
+        $("#divCheckPasswordMatch").html(password == $(this).val() ? "Passwords match." : "Passwords do not match!");
+    });
+
+});
+  </script>
+<script type="text/javascript">
+		degree = ['Graduation' , 'PostGraduation'];
+		course  = [['Computer Science Engineering' , 'Electrical Engineering' , 'Bachelor Of Arts' , 'Economics'] , ['Computer Science Engineering' , 'Applied Mathematics' , 'Advance Economics','Advance Physics']];
+
+		
+
+		function Filldd(){
+			var Typedd = document.getElementById('degree');
+			for (var i = 0; i< degree.length; i++) {
+				var ele = document.createElement('option');
+				ele.text = degree[i];
+				Typedd.add(ele , i+1);
+					}
+				}
+
+		function filldata()
+		{
+			var Typedd = document.getElementById('degree');
+			var selectedIdx = Typedd.selectedIndex;
+			var Datadd = document.getElementById('course');
+			Datadd.length = 1;
+			for(i =0 ; i<course[selectedIdx-1].length; i++)
+			{
+				var ele = document.createElement('option');
+				ele.text = course[selectedIdx-1][i];
+				Datadd.add(ele ,i+1)
+			}
+		}
+
+</script>
+
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: black;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password], input[type = email]{
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+input[type = date]{
+	width: 25%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+.select{
+	width: 50%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+
+.registerbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 20%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+/* Add a blue text color to links */
+
+/* Set a grey background color and center the text of the "sign in" section */
+
+</style>
+
+	<title></title>
+</head>
+<body onload="Filldd()">
+<form action="/action_page.php">
+  <div class="container">
+    <h1>Register</h1>
+    <hr>
+    <label for="name"><b>First Name</b></label>
+    <input type="text" placeholder="Enter First Name" name="name" required>
+
+    <label for="lastname"><b>Last Name </b></label>
+    <input type="text" placeholder="Enter Last Name" name="lastname" required>
+
+    <label for="email"><b>Email</b></label>
+    <input type="email" placeholder="Enter Email" name="email" required>
+
+    <label for="dob"><b>DOB</b></label>
+    <input type="date" name="dob"  id="dob" onclick="dobValidate()" required>
+    <br>
+    <div class="select">
+
+    <b>Select Course:</b><select id="degree" onchange ="filldata()">
+	<OPTION>SELECT Degree</OPTION>
+
+	</select>
+
+	<select id="course" >
+	<option>SELECT Course</option>
+	</select>
+	</div>
+	<br>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" id="psr" name="psw" required>
+
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" id="psw" name="psw-repeat" required>
+    <div class="registrationFormAlert" id="divCheckPasswordMatch"></div>
+    <hr>
+   
+    <button type="submit" id="signup" class="registerbtn">Register</button>
+  </div>
+ 
+</form>
+
+
+</body>
+</html>
