@@ -17,3 +17,22 @@ Create a drop down with qualifications options  as graduation / post graduation
   Date of birth of employee cannot be less than 18 years  from current date Hence (disable all previous 18 years date in date control  )
 
  
+#assessment2
+
+-> customer save
+
+custName
+custLastName
+CustId
+address
+
+save();
+
+001 -> is a sequence number
+generated from the db
+
+fnameVirat
+lastname Kohli
+custId=ViKo001
+
+implements it in Industry standard way
